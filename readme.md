@@ -1,3 +1,5 @@
+[中文](./readme.zh.md)
+
 # Microkey — Bare-Metal Button Driver
 
 A lightweight, event-driven button (key) debounce and short/long-press
