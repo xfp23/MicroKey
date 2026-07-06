@@ -56,6 +56,7 @@ typedef struct
     uint32_t deboun_tick;
     uint32_t hold_short_tick; // 短按保持滴答
     uint32_t hold_long_tick;  // 长按保持滴答
+    uint32_t time_out_tick;  // 未消费超时滴答
 } Microkey_Conf_t;
 
 typedef struct
@@ -67,6 +68,7 @@ typedef struct
     // volatile bool triggered;
     volatile Microkey_Event_t event;
     volatile uint32_t deboun_count;
+    uint32_t t_tick; // 用于超时计数
 } Microkey_obj_t;
 
 #ifdef __cplusplus

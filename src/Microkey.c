@@ -107,10 +107,19 @@ Microkey_Status_t Microkey_Timerhandler(Microkey_obj_t *obj)
         obj->tick = 0;
         obj->touch_type = MICROKEY_TOUCH_NONE;
         obj->event = MICROKEY_EVENT_IDLE;
+        obj->t_tick = 0;
         break;
 
     case MICROKEY_EVENT_IDLE:
         // 空闲
+        break;
+
+    case MICROKEY_EVENT_CATCH:
+        if(++obj->t_tick >= obj->conf.time_out_tick)
+        {
+            obj->event = MICROKEY_EVENT_CLEAR;
+        }
+        
         break;
     default:
         break;
