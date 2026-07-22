@@ -3,7 +3,7 @@
 
 /**
  * @file Microkey.h
- * @author https://github.com/xfp23
+ * @author https://xfp23.github.io
  * @brief Micro series Microkey button event dispatch driver model
  * @version 0.1
  * @date 2026-07-03

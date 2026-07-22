@@ -1,6 +1,6 @@
 /**
  * @file Microkey.c
- * @author https://github.com/xfp23
+ * @author https://xfp23.github.io
  * @brief Micro系列 Micorkey 按键事件分发驱动模型
  * @version 0.1
  * @date 2026-07-03
@@ -91,16 +91,25 @@ Microkey_Status_t Microkey_Timerhandler(Microkey_obj_t *obj)
     {
     case MICROKEY_EVENT_TRIGGER:
         obj->tick++;
+        // 短按由于放手快，所以可以等到松开的时候走另一个流程,不必在此处
+
+        // 应该在还未松手的时候就触发
+        if(obj->tick > obj->conf.hold_short_tick) // 不再等待松手
+        {
+            obj->touch_type = MICROKEY_TOUCH_LONG; // 长按
+            obj->event = MICROKEY_EVENT_CATCH; // 等结果捕获
+        }
         break;
     case MICROKEY_EVENT_RELEASE: // 释放开始掐表
-        obj->touch_type = MICROKEY_TOUCH_SHORT;
+        obj->touch_type = MICROKEY_TOUCH_SHORT; 
 
-        if (obj->tick > obj->conf.hold_short_tick)
-        {
-            obj->touch_type = MICROKEY_TOUCH_LONG;
-        }
+        // 长按此处检测取消
+        // if (obj->tick > obj->conf.hold_short_tick)
+        // {
+        //     obj->touch_type = MICROKEY_TOUCH_LONG;
+        // }
 
-        obj->event = MICROKEY_EVENT_CATCH; // 清除
+        obj->event = MICROKEY_EVENT_CATCH; // 等待捕获结果
         break;
 
     case MICROKEY_EVENT_CLEAR:

@@ -1,6 +1,6 @@
 /**
  * @file Microkey_types.h
- * @author https://github.com/xfp23
+ * @author https://xfp23.github.io
  * @brief Micro系列 Micorkey 按键事件分发驱动模型
  * @version 0.1
  * @date 2026-07-01
