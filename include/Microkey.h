@@ -3,7 +3,7 @@
 
 /**
  * @file Microkey.h
- * @author https://xfp23.github.io
+ * @author https://github.com/xfp23
  * @brief Micro series Microkey button event dispatch driver model
  * @version 0.1
  * @date 2026-07-03
@@ -61,6 +61,29 @@ extern Microkey_Status_t Microkey_Timerhandler(Microkey_obj_t *obj);
  * @return Microkey_TouchSta_t Touch type result
  */
 extern Microkey_TouchSta_t Microkey_GetKeyTouchSta(Microkey_obj_t *obj);
+
+/**
+ * @brief Get key object is busy
+ *
+ * @param obj button object
+ * @return true busy
+ * @return false idle
+ */
+extern bool Microkey_IsBusy(Microkey_obj_t *obj);
+
+/**
+ * @brief Reset object all state
+ *
+ * @param obj button object
+ */
+extern void Microkey_Reset(Microkey_obj_t *obj);
+
+/**
+ * @brief tickHandler
+ * 
+ * @param obj 
+ */
+void Microkey_Tickhandler(Microkey_obj_t *obj);
 
 #ifdef __cplusplus
 }
